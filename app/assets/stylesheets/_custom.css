@@ -4,7 +4,7 @@ Responsive navbar-brand image CSS
 - add 100% height and width auto ... similar to how bootstrap img-responsive class works
 ***********************************/
 
-.example5 .navbar-brand {
+.customnav .navbar-brand {
     display: flex;
     align-items: center;
 }
@@ -15,10 +15,28 @@ Responsive navbar-brand image CSS
     padding-right: 0px;
 }
 
-.example5 .navbar-brand>img {
+#brandname {
+    padding-left: 10px;
+}
+
+#mainview {
+    padding-bottom: 20px;
+    font-size: 28px;
+    color: #777;
+}
+
+.customnav .navbar-brand>img {
     padding: 0px 3px;
 }
 
+.nav a{
+    font-size: 125%;
+}
+
+.navbar-default{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
 
 .wrapper {
     margin-top: 80px;

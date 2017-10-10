@@ -1,21 +1,40 @@
-<section class="container">
-  <div id="main-nav">
-
-    <nav class="navbar">
-      <div class="container">
-
-        <div class="navbar-collapse collapse" id="ftheme">
-
-          <ul class ="nav navbar-nav navbar-left">
-            <li><img src="/app/assets/images/escora.png"></li>
-            <li><h3>ESCORA</h3></li>
-          </ul>
-
+<div id="menubar">
+  <div class="container customnav">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar5">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">
+            <%=image_tag("escora.png", width: '25%')%>
+            <div id="brandname">
+              ESCORA
+            </div>
+          </a>
+        </div>
+        <div id="navbar5" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/sign_up">Cuentas</a></li>
+            <% if user_signed_in? %>
+                <li>
+                  <a href="#">CUENTAS</a>
+                </li>
+                <li>
+                  <%= link_to('SALIR', destroy_user_session_path, method: :delete) %>
+                </li>
+            <% end %>
           </ul>
         </div>
+        <!--/.nav-collapse -->
       </div>
+      <!--/.container-fluid -->
     </nav>
+
   </div>
-</section>
+  <% if user_signed_in? %>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+  <% end %>
+</div>
