@@ -1,0 +1,37 @@
+<%= form_with(model: restoration, local: true) do |form| %>
+  <% if restoration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(restoration.errors.count, "error") %> prohibited this restoration from being saved:</h2>
+
+      <ul>
+      <% restoration.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :reason %>
+    <%= form.text_field :reason, id: :restoration_reason %>
+  </div>
+
+  <div class="field">
+    <%= form.label :responsible %>
+    <%= form.text_field :responsible, id: :restoration_responsible %>
+  </div>
+
+  <div class="field">
+    <%= form.label :since %>
+    <%= form.datetime_select :since, id: :restoration_since %>
+  </div>
+
+  <div class="field">
+    <%= form.label :until %>
+    <%= form.datetime_select :until, id: :restoration_until %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @restoration.reason %>
+</p>
+
+<p>
+  <strong>Responsible:</strong>
+  <%= @restoration.responsible %>
+</p>
+
+<p>
+  <strong>Since:</strong>
+  <%= @restoration.since %>
+</p>
+
+<p>
+  <strong>Until:</strong>
+  <%= @restoration.until %>
+</p>
+
+<%= link_to 'Edit', edit_restoration_path(@restoration) %> |
+<%= link_to 'Back', restorations_path %>

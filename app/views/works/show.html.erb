@@ -1,0 +1,87 @@
+<p>
+  <strong>Name:</strong>
+  <%= @work.name %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @work.author %>
+</p>
+
+<p>
+  <strong>Dimensions:</strong>
+  <%= @work.dimensions %>
+</p>
+
+<p>
+  <strong>Technique:</strong>
+  <%= @work.technique %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @work.year %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @work.location %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @work.status %>
+</p>
+
+<p>
+  <strong>Situation:</strong>
+  <%= @work.situation %>
+</p>
+
+<p>
+  <strong>Situation since:</strong>
+  <%= @work.situation_since %>
+</p>
+
+<p>
+  <strong>Situation until:</strong>
+  <%= @work.situation_until %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @work.owner %>
+</p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @work.origin %>
+</p>
+
+<p>
+  <strong>Has certificate:</strong>
+  <%= @work.has_certificate %>
+</p>
+
+<p>
+  <strong>Certificate picture:</strong>
+  <%= image_tag(@work.certificate_picture_url, width: 600) if @work.certificate_picture.present? %>
+</p>
+
+<p>
+  <strong>Certified by:</strong>
+  <%= @work.certified_by %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @work.value %>
+</p>
+
+<p>
+  <strong>Valuer:</strong>
+  <%= @work.valuer %>
+</p>
+
+<%= link_to 'Edit', edit_work_path(@work) %> |
+<%= link_to 'Back', works_path %>

@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  author: MyString
+  dimensions: MyString
+  technique: MyString
+  year: 2017-10-04
+  location: MyString
+  status: MyString
+  situation: MyString
+  situation_since: 2017-10-04 23:13:37
+  situation_until: 2017-10-04 23:13:37
+  owner: MyString
+  origin: MyString
+  has_certificate: false
+  certificate_picture: MyString
+  certified_by: MyString
+  value: 1.5
+  valuer: MyString
+
+two:
+  name: MyString
+  author: MyString
+  dimensions: MyString
+  technique: MyString
+  year: 2017-10-04
+  location: MyString
+  status: MyString
+  situation: MyString
+  situation_since: 2017-10-04 23:13:37
+  situation_until: 2017-10-04 23:13:37
+  owner: MyString
+  origin: MyString
+  has_certificate: false
+  certificate_picture: MyString
+  certified_by: MyString
+  value: 1.5
+  valuer: MyString

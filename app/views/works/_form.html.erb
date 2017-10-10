@@ -1,0 +1,102 @@
+<%= form_with(model: work, local: true) do |form| %>
+  <% if work.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(work.errors.count, "error") %> prohibited this work from being saved:</h2>
+
+      <ul>
+      <% work.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :work_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author, id: :work_author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dimensions %>
+    <%= form.text_field :dimensions, id: :work_dimensions %>
+  </div>
+
+  <div class="field">
+    <%= form.label :technique %>
+    <%= form.text_field :technique, id: :work_technique %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.date_select :year, id: :work_year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location, id: :work_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status, id: :work_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :situation %>
+    <%= form.text_field :situation, id: :work_situation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :situation_since %>
+    <%= form.datetime_select :situation_since, id: :work_situation_since %>
+  </div>
+
+  <div class="field">
+    <%= form.label :situation_until %>
+    <%= form.datetime_select :situation_until, id: :work_situation_until %>
+  </div>
+
+  <div class="field">
+    <%= form.label :owner %>
+    <%= form.text_field :owner, id: :work_owner %>
+  </div>
+
+  <div class="field">
+    <%= form.label :origin %>
+    <%= form.text_field :origin, id: :work_origin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :has_certificate %>
+    <%= form.check_box :has_certificate, id: :work_has_certificate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :certificate_picture %>
+    <%= form.file_field :certificate_picture, id: :work_certificate_picture %>
+  </div>
+
+  <div class="field">
+    <%= form.label :certified_by %>
+    <%= form.text_field :certified_by, id: :work_certified_by %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.text_field :value, id: :work_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :valuer %>
+    <%= form.text_field :valuer, id: :work_valuer %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
