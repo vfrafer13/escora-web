@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   resources :works
   resources :collections
   resources :warehouses
+  resources :static_pages
 
-  root to: redirect('/works')
+  root "static_pages#index"
   devise_for :users, :controllers => {
       registrations: 'registrations'
   }
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'sign_in', to: 'devise/sessions#new'
     get '/users/sign_out' => 'devise/sessions#destroy'
-
+    get 'index' => 'static_pages#index'
   end
 
   devise_scope :user do

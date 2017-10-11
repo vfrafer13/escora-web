@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-  def show
-    render template: "staticpages/main"
+  def index
   end
 end
