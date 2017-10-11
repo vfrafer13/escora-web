@@ -80,3 +80,35 @@ input[type="password"] {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+
+.row-margin-top {
+    margin-top : 20px;
+}
+
+.row-margin-top-buttons {
+    margin-top : 70px;
+    margin-bottom: 30px;
+}
+
+.show-title {
+    font-size: 16px;
+    color: #000000;
+}
+
+.show-content{
+    font-size: 16px;
+    color: #7f7f7f;
+}
+
+.padding-custom {
+    padding-right:0px;
+    padding-left:0px;
+}
+
+.restoration-button {
+    float: right;
+    color: #777;
+    font-size: 16px;
+    margin-top : 10px;
+    margin-bottom: 20px;
+}

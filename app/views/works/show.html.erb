@@ -1,87 +1,187 @@
-<p>
-  <strong>Name:</strong>
-  <%= @work.name %>
-</p>
+<div class="container">
+  <div class="text-left">
+    <h1 id="mainview">"<%= @work.name %>"
+      <%= link_to '<div class= "restoration-button">Nueva restauración <i class="glyphicon glyphicon-plus-sign"></i></div>' .html_safe, new_restoration_path %>
+    </h1>
+  </div>
+</div>
 
-<p>
-  <strong>Author:</strong>
-  <%= @work.author %>
-</p>
+<div class="container">
+  <table class="table table-bordered table-striped table-hover table-responsive">
+    <thead>
+      <tr>
+        <th>
+          <div class="row">
+            <div class="col-lg-3">
+              <div class="col-md-4">
+                <div class="show-title">Título:</div>
+              </div>
+              <div class="col-md-8">
+                <div class="show-content">"<%= @work.name %>"</div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="col-md-5">
+                <div class="show-title">Situación:</div>
+              </div>
+              <div class="col-md-7">
+                <div class="show-content"><%= @work.situation %></div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="col-md-2">
+                <div class="show-title">Desde:</div>
+              </div>
+              <div class="col-md-4">
+                <div class="show-content"><%= @work.situation_since.to_date.to_formatted_s(:rfc822)  %></div>
+              </div>
+              <div class="col-md-2">
+                <div class="show-title">Hasta:</div>
+              </div>
+              <div class="col-md-4">
+                <div class="show-content"><%= @work.situation_until.to_date.to_formatted_s(:rfc822) %></div>
+              </div>
+            </div>
+          </div>
+          <div class="row row-margin-top">
+            <div class="col-lg-3">
+              <div class="col-md-4">
+                <div class="show-title">Autor:</div>
+              </div>
+              <div class="col-md-8">
+                <div class="show-content"><%= @work.author %></div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="col-md-5">
+                <div class="show-title">Colección:</div>
+              </div>
+              <div class="col-md-7">
+                <div class="show-content"><%= @work.collection %></div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="col-md-2">
+                <div class="show-title">Estado:</div>
+              </div>
+              <div class="col-md-10">
+                <div class="show-content"><%= @work.status %></div>
+              </div>
+            </div>
+          </div>
+          <div class="row row-margin-top">
+            <div class="col-lg-3">
+              <div class="col-md-4">
+                <div class="show-title">Técnica:</div>
+              </div>
+              <div class="col-md-8">
+                <div class="show-content"><%= @work.technique %></div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="col-md-5">
+                <div class="show-title">Dimensiones:</div>
+              </div>
+              <div class="col-md-7">
+                <div class="show-content"><%= @work.dimensions %></div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="col-md-2">
+                <div class="show-title">Año:</div>
+              </div>
+              <div class="col-md-10">
+                <div class="show-content"><%= @work.year %></div>
+              </div>
+            </div>
+          </div>
+          <div class="row row-margin-top">
+            <div class="col-lg-3">
+              <div class="col-md-4">
+                <div class="show-title">Origen:</div>
+              </div>
+              <div class="col-md-8">
+                <div class="show-content"><%= @work.origin %></div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="col-md-5">
+                <div class="show-title">Ubicación:</div>
+              </div>
+              <div class="col-md-7">
+                <div class="show-content"><%= @work.location %></div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="col-md-2">
+                <div class="show-title">Dueño:</div>
+              </div>
+              <div class="col-md-10">
+                <div class="show-content"><%= @work.owner %></div>
+              </div>
+            </div>
+          </div>
+          <div class="row row-margin-top">
+            <div class="col-lg-3">
+              <div class="col-md-4">
+                <div class="show-title">Valor:</div>
+              </div>
+              <div class="col-md-8">
+                <div class="show-content"><%= @work.value %></div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="col-md-5">
+                <div class="show-title">Valuador:</div>
+              </div>
+              <div class="col-md-7">
+                <div class="show-content"><%= @work.valuer %></div>
+              </div>
+            </div>
+            <div class="col-lg-4"></div>
+          </div>
+          <div class="row row-margin-top">
+            <div class="col-lg-3">
+              <div class="col-md-4">
+                <div class="show-title">Almacén:</div>
+              </div>
+              <div class="col-md-8">
+                <div class="show-content"><%= @work.warehouse %></div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="col-md-5">
+                <% if @work.has_certificate? %>
+                    <div class="show-title">Certificador:</div>
+                <% end %>
+              </div>
+              <div class="col-md-7">
+                <% if @work.has_certificate? %>
+                    <div class="show-content"><%= @work.certified_by %></div>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="col-md-12">
+                <% if @work.has_certificate? %>
+                    <div class="show-content">
+                      <%= link_to 'Ver Certificado', @work.certificate_picture_url %>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="row row-margin-top-buttons">
+            <div class="text-center">
+              <%= link_to '<button type="button" class="btn btn-success">Editar</button>' .html_safe, edit_work_path(@work) %>
+              <%= link_to '<button type="button" class="btn btn-danger">Eliminar</button>' .html_safe, @work, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        </th>
+      </tr>
+      </thead>
+  </table>
+</div>
 
-<p>
-  <strong>Dimensions:</strong>
-  <%= @work.dimensions %>
-</p>
 
-<p>
-  <strong>Technique:</strong>
-  <%= @work.technique %>
-</p>
 
-<p>
-  <strong>Year:</strong>
-  <%= @work.year %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @work.location %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @work.status %>
-</p>
-
-<p>
-  <strong>Situation:</strong>
-  <%= @work.situation %>
-</p>
-
-<p>
-  <strong>Situation since:</strong>
-  <%= @work.situation_since %>
-</p>
-
-<p>
-  <strong>Situation until:</strong>
-  <%= @work.situation_until %>
-</p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= @work.owner %>
-</p>
-
-<p>
-  <strong>Origin:</strong>
-  <%= @work.origin %>
-</p>
-
-<p>
-  <strong>Has certificate:</strong>
-  <%= @work.has_certificate %>
-</p>
-
-<p>
-  <strong>Certificate picture:</strong>
-  <%= image_tag(@work.certificate_picture_url, width: 600) if @work.certificate_picture.present? %>
-</p>
-
-<p>
-  <strong>Certified by:</strong>
-  <%= @work.certified_by %>
-</p>
-
-<p>
-  <strong>Value:</strong>
-  <%= @work.value %>
-</p>
-
-<p>
-  <strong>Valuer:</strong>
-  <%= @work.valuer %>
-</p>
-
-<%= link_to 'Edit', edit_work_path(@work) %> |
-<%= link_to 'Back', works_path %>
