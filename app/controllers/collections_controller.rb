@@ -15,10 +15,12 @@ class CollectionsController < ApplicationController
   # GET /collections/new
   def new
     @collection = Collection.new
+    @warehouses = Warehouse.all
   end
 
   # GET /collections/1/edit
   def edit
+    @warehouses = Warehouse.all
   end
 
   # POST /collections

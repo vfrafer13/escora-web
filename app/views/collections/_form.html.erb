@@ -1,27 +1,31 @@
-<%= form_with(model: collection, local: true) do |form| %>
-  <% if collection.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
+<div class="wrapper">
+  <%= form_with(model: collection, local: true, :html => {:class => 'form-signin'}) do |form| %>
+      <% if collection.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
 
-      <ul>
-      <% collection.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+            <ul>
+              <% collection.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :collection_name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :description %>
+        <%= form.text_field :description, id: :collection_description, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :description %>
+        <% options = options_from_collection_for_select(@warehouses, 'name', 'name') %>
+        <%= form.select :warehouse,  options,  {}, :class => 'form-control selectpicker', 'data-live-search' => 'true' %>
+      </div>
+      <div class="actions">
+        <%= form.submit "Guardar", class: "btn btn-primary center-block"%>
+      </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :collection_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :collection_description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

@@ -69,6 +69,7 @@ class RestorationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restoration_params
-      params.require(:restoration).permit(:reason, :responsible, :since, :until)
+      params.require(:restoration).permit(:reason, :responsible, :since,
+                                          :until, :work)
     end
 end
