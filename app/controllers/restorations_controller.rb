@@ -1,5 +1,6 @@
 class RestorationsController < ApplicationController
   before_action :set_restoration, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /restorations
   # GET /restorations.json
@@ -15,10 +16,12 @@ class RestorationsController < ApplicationController
   # GET /restorations/new
   def new
     @restoration = Restoration.new
+    @works = Work.all
   end
 
   # GET /restorations/1/edit
   def edit
+    @works = Work.all
   end
 
   # POST /restorations

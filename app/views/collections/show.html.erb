@@ -24,7 +24,9 @@
               <div class="show-title">Total de Obras:</div>
             </div>
             <div class="col-md-8">
-              <div class="show-content">TBD</div>
+              <div class="show-content">
+                <%= Work.where(collection: @collection.name).count %>
+              </div>
             </div>
           </div>
         </div>
@@ -43,7 +45,7 @@
         <div class="row row-margin-top-buttons">
           <div class="text-center">
             <%= link_to '<button type="button" class="btn btn-success">Editar</button>' .html_safe, edit_collection_path(@collection) %>
-            <%= link_to '<button type="button" class="btn btn-danger">Eliminar</button>' .html_safe, @collection, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to '<button type="button" class="btn btn-danger">Eliminar</button>' .html_safe, @collection, method: :delete, data: { confirm: '¿Desea eliminar la colección?' } %>
           </div>
         </div>
       </th>
@@ -51,3 +53,4 @@
     </thead>
   </table>
 </div>
+<%= link_to 'Regresar a Colecciones' .html_safe, collections_path, class: "return text-center center-block" %>

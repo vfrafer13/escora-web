@@ -12,15 +12,15 @@
           </div>
       <% end %>
       <div class="form-group">
-        <%= form.label :name %>
+        <%= form.label :nombre %>
         <%= form.text_field :name, id: :collection_name, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= form.label :description %>
+        <%= form.label :descripción %>
         <%= form.text_field :description, id: :collection_description, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= form.label :description %>
+        <%= form.label :almacén %>
         <% options = options_from_collection_for_select(@warehouses, 'name', 'name') %>
         <%= form.select :warehouse,  options,  {}, :class => 'form-control selectpicker', 'data-live-search' => 'true' %>
       </div>
@@ -28,4 +28,6 @@
         <%= form.submit "Guardar", class: "btn btn-primary center-block"%>
       </div>
   <% end %>
+
+  <%= link_to 'Regresar a Colección' .html_safe, @collection, class: "return text-center center-block" %>
 </div>

@@ -1,5 +1,6 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /collections
   # GET /collections.json
@@ -56,10 +57,16 @@ class CollectionsController < ApplicationController
   # DELETE /collections/1
   # DELETE /collections/1.json
   def destroy
-    @collection.destroy
-    respond_to do |format|
-      format.html { redirect_to collections_url, notice: 'Collection was successfully destroyed.' }
-      format.json { head :no_content }
+    if Work.where(collection: @collection.name).count == 0
+      @collection.destroy
+      respond_to do |format|
+        format.html { redirect_to collections_url, notice: 'Collection was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to collections_url, notice: 'No se eliminó la colección. Elimine obras relacionadas primero.' }
+      end
     end
   end
 

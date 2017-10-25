@@ -7,7 +7,7 @@
 </div>
 
 <div class="container">
-  <table class="table table-bordered table-striped table-hover table-responsive">
+  <table id = "collections" class="table table-bordered table-striped table-hover table-responsive">
     <thead>
     <tr>
       <th>ID</th>
@@ -25,16 +25,21 @@
           <td><%= collection.warehouse %></td>
           <td><%= collection.name %></td>
           <td><%= collection.description %></td>
-          <td>TBD</td>
+          <td><%= Work.where(collection: collection.name).count %></td>
           <td>
             <%= link_to '<i class="glyphicon glyphicon-eye-open"></i>'.html_safe, collection%>
 
             <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe, edit_collection_path(collection) %>
 
-            <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, collection, method: :delete, data: { confirm: 'Are you sure?' }  %>
+            <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, collection, method: :delete, data: { confirm: '¿Desea eliminar la colección?' }  %>
           </td>
         </tr>
     <% end %>
     </tbody>
   </table>
 </div>
+<script>
+    $( document).ready(function() {
+        $('#collections').DataTable();
+    } );
+</script>

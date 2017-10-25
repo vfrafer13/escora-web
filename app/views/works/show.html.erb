@@ -1,8 +1,6 @@
 <div class="container">
   <div class="text-left">
-    <h1 id="mainview">"<%= @work.name %>"
-      <%= link_to '<div class= "restoration-button">Nueva restauración <i class="glyphicon glyphicon-plus-sign"></i></div>' .html_safe, new_restoration_path %>
-    </h1>
+    <h1 id="mainview">"<%= @work.name %>"</h1>
   </div>
 </div>
 
@@ -174,7 +172,7 @@
           <div class="row row-margin-top-buttons">
             <div class="text-center">
               <%= link_to '<button type="button" class="btn btn-success">Editar</button>' .html_safe, edit_work_path(@work) %>
-              <%= link_to '<button type="button" class="btn btn-danger">Eliminar</button>' .html_safe, @work, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to '<button type="button" class="btn btn-danger">Eliminar</button>' .html_safe, @work, method: :delete, data: { confirm: '¿Desea eliminar la obra?' } %>
             </div>
           </div>
         </th>
@@ -182,6 +180,9 @@
       </thead>
   </table>
 </div>
+
+<%= link_to 'Regresar a Obras' .html_safe, works_path, class: "return text-center center-block" %>
+
 
 
 

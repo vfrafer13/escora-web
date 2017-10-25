@@ -24,7 +24,9 @@
               <div class="show-title">Total de Colecciones:</div>
             </div>
             <div class="col-md-5">
-              <div class="show-content">TBD</div>
+              <div class="show-content">
+                <%= Collection.where(warehouse: @warehouse.name).count %>
+              </div>
             </div>
           </div>
         </div>
@@ -42,14 +44,16 @@
               <div class="show-title">Total de Obras:</div>
             </div>
             <div class="col-md-5">
-              <div class="show-content">TBD</div>
+              <div class="show-content">
+                <%= Work.where(warehouse: @warehouse.name).count %>
+              </div>
             </div>
           </div>
         </div>
         <div class="row row-margin-top-buttons">
           <div class="text-center">
             <%= link_to '<button type="button" class="btn btn-success">Editar</button>' .html_safe, edit_warehouse_path(@warehouse) %>
-            <%= link_to '<button type="button" class="btn btn-danger">Eliminar</button>' .html_safe, @warehouse, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to '<button type="button" class="btn btn-danger">Eliminar</button>' .html_safe, @warehouse, method: :delete, data: { confirm: '¿Desea eliminar el almacén?' } %>
           </div>
         </div>
       </th>
@@ -57,3 +61,4 @@
     </thead>
   </table>
 </div>
+<%= link_to 'Regresar a Almacenes' .html_safe, warehouses_path, class: "return text-center center-block" %>

@@ -1,32 +1,31 @@
-<%= form_with(model: warehouse, local: true) do |form| %>
-  <% if warehouse.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(warehouse.errors.count, "error") %> prohibited this warehouse from being saved:</h2>
+<div class="wrapper">
+  <%= form_with(model: warehouse, local: true, :html => {:class => 'form-signin'}) do |form| %>
+      <% if warehouse.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(warehouse.errors.count, "error") %> prohibited this warehouse from being saved:</h2>
 
-      <ul>
-      <% warehouse.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+            <ul>
+              <% warehouse.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
+      <div class="form-group">
+        <%= form.label :nombre %>
+        <%= form.text_field :name, id: :warehouse_name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :descripción %>
+        <%= form.text_field :description, id: :warehouse_description, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :ubicación %>
+        <%= form.text_field :location, id: :warehouse_location, :class => 'form-control' %>
+      </div>
+      <div class="actions">
+        <%= form.submit "Guardar", class: "btn btn-primary center-block"%>
+      </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :warehouse_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location, id: :warehouse_location %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :warehouse_description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  <%= link_to 'Regresar a Almacén' .html_safe, @warehouse, class: "return text-center center-block" %>
+</div>

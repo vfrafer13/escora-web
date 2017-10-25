@@ -7,7 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # Users
 User.create(email: 'vfrafer13@gmail.com', password: 'nirvana13', password_confirmation: 'nirvana13', role: 'admin')
-User.create(email: 'vfrafer13@gmail.com', password: 'nirvana13', password_confirmation: 'nirvana13', role: 'admin')
+User.create(email: 'vfrafer12@gmail.com', password: 'nirvana13', password_confirmation: 'nirvana13', role: 'viewer')
+User.create(email: 'vfrafer11@gmail.com', password: 'nirvana13', password_confirmation: 'nirvana13', role: 'editor')
 
 # Warehouses
 Warehouse.create(name: 'Bodega 1', location: 'Chenku', description: 'Bodega de Arte Moderno')

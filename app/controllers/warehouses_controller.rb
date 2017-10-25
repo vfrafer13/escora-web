@@ -1,5 +1,6 @@
 class WarehousesController < ApplicationController
   before_action :set_warehouse, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /warehouses
   # GET /warehouses.json
@@ -54,10 +55,17 @@ class WarehousesController < ApplicationController
   # DELETE /warehouses/1
   # DELETE /warehouses/1.json
   def destroy
-    @warehouse.destroy
-    respond_to do |format|
-      format.html { redirect_to warehouses_url, notice: 'Warehouse was successfully destroyed.' }
-      format.json { head :no_content }
+    if Work.where(warehouse: @warehouse.name).count == 0 && Collection.where(warehouse: @warehouse.name).count == 0
+      @warehouse.destroy
+      respond_to do |format|
+        format.html { redirect_to warehouses_url, notice: 'Warehouse was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to warehouses_url, notice: 'No se eliminó el almacén. Elimine obras y colecciones relacionadas primero.' }
+
+      end
     end
   end
 

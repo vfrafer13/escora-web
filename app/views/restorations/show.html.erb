@@ -1,6 +1,6 @@
 <div class="container">
   <div class="text-left">
-    <h1 id="mainview">##<%= @restoration.id %> "<%= @restoration.work %>"
+    <h1 id="mainview">#<%= @restoration.id %> "<%= @restoration.work %>"
     </h1>
   </div>
 </div>
@@ -49,7 +49,7 @@
         <div class="row row-margin-top-buttons">
           <div class="text-center">
             <%= link_to '<button type="button" class="btn btn-success">Editar</button>' .html_safe, edit_restoration_path(@restoration) %>
-            <%= link_to '<button type="button" class="btn btn-danger">Eliminar</button>' .html_safe, @restoration, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to '<button type="button" class="btn btn-danger">Eliminar</button>' .html_safe, @restoration, method: :delete, data: { confirm: '¿Desea eliminar la restauración?' } %>
           </div>
         </div>
       </th>
@@ -57,3 +57,4 @@
     </thead>
   </table>
 </div>
+<%= link_to 'Regresar a Restauraciones' .html_safe, restorations_path, class: "return text-center center-block" %>
