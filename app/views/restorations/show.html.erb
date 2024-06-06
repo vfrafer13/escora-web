@@ -1,24 +1,60 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="text-left">
+    <h1 id="mainview">#<%= @restoration.id %> "<%= @restoration.work %>"
+    </h1>
+  </div>
+</div>
 
-<p>
-  <strong>Reason:</strong>
-  <%= @restoration.reason %>
-</p>
-
-<p>
-  <strong>Responsible:</strong>
-  <%= @restoration.responsible %>
-</p>
-
-<p>
-  <strong>Since:</strong>
-  <%= @restoration.since %>
-</p>
-
-<p>
-  <strong>Until:</strong>
-  <%= @restoration.until %>
-</p>
-
-<%= link_to 'Edit', edit_restoration_path(@restoration) %> |
-<%= link_to 'Back', restorations_path %>
+<div class="container">
+  <table class="table table-bordered table-striped table-hover table-responsive">
+    <thead>
+    <tr>
+      <th>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="col-md-5">
+              <div class="show-title">Responsable</div>
+            </div>
+            <div class="col-md-7">
+              <div class="show-content">"<%= @restoration.responsible %>"</div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="col-md-5">
+              <div class="show-title">Desde:</div>
+            </div>
+            <div class="col-md-7">
+              <div class="show-content"><%= @restoration.since.to_date.to_formatted_s(:rfc822)%></div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-margin-top">
+          <div class="col-lg-6">
+            <div class="col-md-5">
+              <div class="show-title">Motivo:</div>
+            </div>
+            <div class="col-md-7">
+              <div class="show-content"><%= @restoration.reason %></div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="col-md-5">
+              <div class="show-title">Hasta:</div>
+            </div>
+            <div class="col-md-7">
+              <div class="show-content"><%= @restoration.until.to_date.to_formatted_s(:rfc822)%></div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-margin-top-buttons">
+          <div class="text-center">
+            <%= link_to '<button type="button" class="btn btn-success">Editar</button>' .html_safe, edit_restoration_path(@restoration) %>
+            <%= link_to '<button type="button" class="btn btn-danger">Eliminar</button>' .html_safe, @restoration, method: :delete, data: { confirm: '¿Desea eliminar la restauración?' } %>
+          </div>
+        </div>
+      </th>
+    </tr>
+    </thead>
+  </table>
+</div>
+<%= link_to 'Regresar a Restauraciones' .html_safe, restorations_path, class: "return text-center center-block" %>

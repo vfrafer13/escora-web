@@ -1,5 +1,6 @@
 class RestorationsController < ApplicationController
   before_action :set_restoration, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /restorations
   # GET /restorations.json
@@ -15,10 +16,12 @@ class RestorationsController < ApplicationController
   # GET /restorations/new
   def new
     @restoration = Restoration.new
+    @works = Work.all
   end
 
   # GET /restorations/1/edit
   def edit
+    @works = Work.all
   end
 
   # POST /restorations
@@ -69,6 +72,7 @@ class RestorationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restoration_params
-      params.require(:restoration).permit(:reason, :responsible, :since, :until)
+      params.require(:restoration).permit(:reason, :responsible, :since,
+                                          :until, :work)
     end
 end

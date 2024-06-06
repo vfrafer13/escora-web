@@ -5,7 +5,7 @@ class CreateRestorations < ActiveRecord::Migration[5.1]
       t.string :responsible
       t.datetime :since
       t.datetime :until
-
+      t.string :work
       t.timestamps
     end
   end

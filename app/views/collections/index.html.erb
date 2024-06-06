@@ -1,29 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Collections</h1>
+<div class="container">
+  <h1 id="mainview">VISTA GENERAL - COLECCIONES
+    <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, new_collection_path %>
+  </h1>
+</div>
 
-<table>
-  <thead>
+<div class="container">
+  <table id = "collections" class="table table-bordered table-striped table-hover table-responsive">
+    <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th>Almacén</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Total de Obras</th>
+      <th></th>
     </tr>
-  </thead>
-
-  <tbody>
+    </thead>
+    <tbody>
     <% @collections.each do |collection| %>
-      <tr>
-        <td><%= collection.name %></td>
-        <td><%= collection.description %></td>
-        <td><%= link_to 'Show', collection %></td>
-        <td><%= link_to 'Edit', edit_collection_path(collection) %></td>
-        <td><%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <tr>
+          <td><%= collection.id %></td>
+          <td><%= collection.warehouse %></td>
+          <td><%= collection.name %></td>
+          <td><%= collection.description %></td>
+          <td><%= Work.where(collection: collection.name).count %></td>
+          <td>
+            <%= link_to '<i class="glyphicon glyphicon-eye-open"></i>'.html_safe, collection%>
+
+            <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe, edit_collection_path(collection) %>
+
+            <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, collection, method: :delete, data: { confirm: '¿Desea eliminar la colección?' }  %>
+          </td>
+        </tr>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Collection', new_collection_path %>
+    </tbody>
+  </table>
+</div>
+<script>
+    $( document).ready(function() {
+        $('#collections').DataTable();
+    } );
+</script>

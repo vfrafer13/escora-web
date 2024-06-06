@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /works
   # GET /works.json
@@ -15,10 +16,14 @@ class WorksController < ApplicationController
   # GET /works/new
   def new
     @work = Work.new
+    @warehouses = Warehouse.all
+    @collections = Collection.all
   end
 
   # GET /works/1/edit
   def edit
+    @warehouses = Warehouse.all
+    @collections = Collection.all
   end
 
   # POST /works
@@ -54,10 +59,16 @@ class WorksController < ApplicationController
   # DELETE /works/1
   # DELETE /works/1.json
   def destroy
-    @work.destroy
-    respond_to do |format|
-      format.html { redirect_to works_url, notice: 'Work was successfully destroyed.' }
-      format.json { head :no_content }
+    if Restoration.where(work: @work.name).count == 0
+      @work.destroy
+      respond_to do |format|
+        format.html { redirect_to works_url, notice: 'Work was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to works_url, notice: 'No se eliminó la obra. Elimine restauraciones relacionadas primero.' }
+      end
     end
   end
 
@@ -69,6 +80,11 @@ class WorksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def work_params
-      params.require(:work).permit(:name, :author, :dimensions, :technique, :year, :location, :status, :situation, :situation_since, :situation_until, :owner, :origin, :has_certificate, :certificate_picture, :certified_by, :value, :valuer)
+      params.require(:work).permit(:name, :author, :dimensions,
+                                   :technique, :year, :location, :status,
+                                   :situation, :situation_since, :situation_until,
+                                   :owner, :origin, :has_certificate,
+                                   :certificate_picture, :certified_by, :value,
+                                   :valuer, :collection, :warehouse)
     end
 end

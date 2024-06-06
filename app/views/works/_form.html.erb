@@ -1,102 +1,153 @@
-<%= form_with(model: work, local: true) do |form| %>
-  <% if work.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(work.errors.count, "error") %> prohibited this work from being saved:</h2>
+<div class="wrapper">
+  <%= form_with(model: work, local: true) do |form| %>
+      <% if work.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(work.errors.count, "error") %> prohibited this work from being saved:</h2>
 
-      <ul>
-      <% work.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+            <ul>
+              <% work.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div class="container">
+        <table class="table table-bordered table-striped table-hover table-responsive">
+          <thead>
+          <tr>
+            <th>
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :nombre %>
+                    <%= form.text_field :name, id: :work_name, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :situación %>
+                    <%= form.select :situation,  Work::SITUATION_LIST,  {}, :class => 'form-control selectpicker', 'data-live-search' => 'true' %>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :desde %>
+                    <%= form.date_field :situation_since, id: :work_situation_since, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :hasta %>
+                    <%= form.date_field :situation_until, id: :work_situation_until, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+              <div class="row row-margin-top">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :autor %>
+                    <%= form.text_field :author, id: :work_author, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :collección %>
+                    <% options = options_from_collection_for_select(@collections, 'name', 'name') %>
+                    <%= form.select :collection,  options,  {}, :class => 'form-control selectpicker', 'data-live-search' => 'true' %>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :estado %>
+                    <%= form.select :status, Work::STATUS_LIST,  {}, :class => 'form-control selectpicker', 'data-live-search' => 'true' %>
+                  </div>
+                </div>
+              </div>
+              <div class="row row-margin-top">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :técnica %>
+                    <%= form.text_field :technique, id: :work_technique, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :dimensiones %>
+                    <%= form.text_field :dimensions, id: :work_dimensions, class: "form-control"%>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :año %>
+                    <%= form.text_field :year, id: :work_year, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+              <div class="row row-margin-top">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :origen %>
+                    <%= form.select :origin,  Work::ORIGIN_LIST,  {}, :class => 'form-control selectpicker', 'data-live-search' => 'true' %>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :ubicación %>
+                    <%= form.text_field :location, id: :work_location, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :dueño %>
+                    <%= form.text_field :owner, id: :work_owner, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+              <div class="row row-margin-top">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :valor %>
+                    <%= form.text_field :value, id: :work_value, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :valuador %>
+                    <%= form.text_field :valuer, id: :work_valuer, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :tiene_certificado %>
+                    <%= form.check_box :has_certificate, id: :work_has_certificate, class: "form-check-input" %>
+                    <%= form.file_field :certificate_picture, id: :work_certificate_picture, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+              <div class="row row-margin-top">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :almacén %>
+                    <% options = options_from_collection_for_select(@warehouses, 'name', 'name') %>
+                    <%= form.select :warehouse,  options,  {}, :class => 'form-control selectpicker', 'data-live-search' => 'true' %>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <%= form.label :certificador, id: :label_certified_by%>
+                    <%= form.text_field :certified_by, id: :work_certified_by, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+            </th>
+          </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="actions">
+        <%= form.submit "Guardar", class: "btn btn-primary center-block"%>
+      </div>
+    <% end %>
+  <%= link_to 'Regresar a Obra' .html_safe, @work, class: "return text-center center-block" %>
+</div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :work_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author, id: :work_author %>
-  </div>
-
-  <div class="field">
-    <%= form.label :dimensions %>
-    <%= form.text_field :dimensions, id: :work_dimensions %>
-  </div>
-
-  <div class="field">
-    <%= form.label :technique %>
-    <%= form.text_field :technique, id: :work_technique %>
-  </div>
-
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.date_select :year, id: :work_year %>
-  </div>
-
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location, id: :work_location %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :work_status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :situation %>
-    <%= form.text_field :situation, id: :work_situation %>
-  </div>
-
-  <div class="field">
-    <%= form.label :situation_since %>
-    <%= form.datetime_select :situation_since, id: :work_situation_since %>
-  </div>
-
-  <div class="field">
-    <%= form.label :situation_until %>
-    <%= form.datetime_select :situation_until, id: :work_situation_until %>
-  </div>
-
-  <div class="field">
-    <%= form.label :owner %>
-    <%= form.text_field :owner, id: :work_owner %>
-  </div>
-
-  <div class="field">
-    <%= form.label :origin %>
-    <%= form.text_field :origin, id: :work_origin %>
-  </div>
-
-  <div class="field">
-    <%= form.label :has_certificate %>
-    <%= form.check_box :has_certificate, id: :work_has_certificate %>
-  </div>
-
-  <div class="field">
-    <%= form.label :certificate_picture %>
-    <%= form.file_field :certificate_picture, id: :work_certificate_picture %>
-  </div>
-
-  <div class="field">
-    <%= form.label :certified_by %>
-    <%= form.text_field :certified_by, id: :work_certified_by %>
-  </div>
-
-  <div class="field">
-    <%= form.label :value %>
-    <%= form.text_field :value, id: :work_value %>
-  </div>
-
-  <div class="field">
-    <%= form.label :valuer %>
-    <%= form.text_field :valuer, id: :work_valuer %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

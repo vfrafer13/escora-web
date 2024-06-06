@@ -3,7 +3,7 @@ class CreateCollections < ActiveRecord::Migration[5.1]
     create_table :collections do |t|
       t.string :name
       t.string :description
-
+      t.string :warehouse
       t.timestamps
     end
   end

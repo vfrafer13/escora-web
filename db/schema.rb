@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019061443) do
+ActiveRecord::Schema.define(version: 20171008041443) do
 
   create_table "collections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "description"
+    t.string "warehouse"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "warehouse"
   end
 
   create_table "restorations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 20171019061443) do
     t.string "responsible"
     t.datetime "since"
     t.datetime "until"
+    t.string "work"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "work"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -75,10 +75,10 @@ ActiveRecord::Schema.define(version: 20171019061443) do
     t.string "certified_by"
     t.float "value", limit: 24
     t.string "valuer"
+    t.string "warehouse"
+    t.string "collection"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "warehouse"
-    t.integer "collection"
   end
 
 end

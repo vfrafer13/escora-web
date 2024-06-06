@@ -18,7 +18,8 @@ class CreateWorks < ActiveRecord::Migration[5.1]
       t.string :certified_by
       t.float :value
       t.string :valuer
-
+      t.string :warehouse
+      t.string :collection
       t.timestamps
     end
   end

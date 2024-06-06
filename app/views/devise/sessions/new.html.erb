@@ -1,6 +1,6 @@
 <div class="wrapper">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'form-signin'}) do |f| %>
-    <h2 class="form-signin-heading">Inicia Sesión</h2>
+    <h2 class="form-signin-heading text-center">Inicia Sesión</h2>
       <div class="form-group">
         <span><i class="glyphicon glyphicon-user"></i></span>
         <%= f.label :email %>
@@ -12,7 +12,7 @@
         <%= f.password_field :password, autocomplete: "off", class: "form-control"%>
       </div>
       <% if devise_mapping.rememberable? -%>
-          <div class="field">
+          <div class="field text-center">
             <%= f.check_box :remember_me %>
             <label>Recordar mis datos</label>
           </div>

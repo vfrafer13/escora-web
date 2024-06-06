@@ -1,42 +1,43 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <h1 id="mainview">VISTA GENERAL - OBRAS
+    <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, new_work_path %>
+    <%= link_to '<i class="glyphicon glyphicon-save"></i>'.html_safe, new_work_path %>
+  </h1>
+</div>
 
-<h1>Gestión de Obras</h1>
+<div class="container">
+  <table id="works" class="table table-bordered table-striped table-hover table-responsive">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Año</th>
+      <th>Detalles</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @works.each do |work| %>
+        <tr>
+          <td><%= work.id %></td>
+          <td><%= work.name %></td>
+          <td><%= work.author %></td>
+          <td><%= work.year %></td>
+          <td><%= link_to 'Ver detalles', work %></td>
+          <td>
+            <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe, edit_work_path(work) %>
 
-<table class="table table-bordered table-striped table-hover table-responsive">
-  <thead>
-  <tr>
-    <th>
-      ID
-    </th>
-    <th>
-      Título
-    </th>
-    <th>
-      Autor
-    </th>
-    <th>
-      Año
-    </th>
-    <th>
-      Detalles
-    </th>
-  </tr>
-  </thead>
-  <tbody>
-    <% @works.each do |work| %>
-      <tr>
-        <td><%= work.id %></td>
-        <td><%= work.name %></td>
-        <td><%= work.author %></td>
-        <td><%= work.year %></td>
-        <td><%= link_to 'Show', work %></td>
-        <td><%= link_to 'Edit', edit_work_path(work) %></td>
-        <td><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Work', new_work_path %>
+            <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, work, method: :delete, data: { confirm: '¿Desea eliminar la obra?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<script>
+    $( document).ready(function() {
+        $('#works').DataTable();
+    } );
+</script>

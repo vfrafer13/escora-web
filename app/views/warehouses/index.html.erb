@@ -1,31 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Warehouses</h1>
+<div class="container">
+  <h1 id="mainview">VISTA GENERAL - ALMACENES
+    <%= link_to '<i class="glyphicon glyphicon-plus-sign"></i>'.html_safe, new_warehouse_path%>
+  </h1>
+</div>
 
-<table>
-  <thead>
+<div class="container">
+  <table id="warehouses" class="table table-bordered table-striped table-hover table-responsive">
+    <thead>
     <tr>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Description</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th>Almacén</th>
+      <th>Ubicación</th>
+      <th>Descripción</th>
+      <th>Total de Colecciones</th>
+      <th>Total de Obras</th>
+      <th></th>
     </tr>
-  </thead>
-
-  <tbody>
+    </thead>
+    <tbody>
     <% @warehouses.each do |warehouse| %>
-      <tr>
-        <td><%= warehouse.name %></td>
-        <td><%= warehouse.location %></td>
-        <td><%= warehouse.description %></td>
-        <td><%= link_to 'Show', warehouse %></td>
-        <td><%= link_to 'Edit', edit_warehouse_path(warehouse) %></td>
-        <td><%= link_to 'Destroy', warehouse, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <tr>
+          <td><%= warehouse.id %></td>
+          <td><%= warehouse.name %></td>
+          <td><%= warehouse.location %></td>
+          <td><%= warehouse.description %></td>
+          <td><%= Collection.where(warehouse: warehouse.name).count %></td>
+          <td><%= Work.where(warehouse: warehouse.name).count %></td>
+          <td>
+            <%= link_to '<i class="glyphicon glyphicon-eye-open"></i>'.html_safe, warehouse%>
+
+            <%= link_to '<i class="glyphicon glyphicon-edit"></i>'.html_safe, edit_warehouse_path(warehouse) %>
+
+            <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, warehouse, method: :delete, data: { confirm: '¿Desea eliminar el almacén?' }  %>
+          </td>
+        </tr>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Warehouse', new_warehouse_path %>
+    </tbody>
+  </table>
+</div>
+<script>
+    $( document).ready(function() {
+        $('#warehouses').DataTable();
+    } );
+</script>
