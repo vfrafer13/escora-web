@@ -22,6 +22,9 @@ default: &default
 development:
   <<: *default
   database: escora-web_development
+  host: localhost
+  username: postgres 
+  password: 12345
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -29,6 +32,9 @@ development:
 test:
   <<: *default
   database: escora-web_test
+  host: localhost
+  username: postgres 
+  password: 12345
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -52,5 +58,6 @@ test:
 production:
   <<: *default
   database: escora-web_production
-  username: escora-web
-  password: <%= ENV['ESCORA-WEB_DATABASE_PASSWORD'] %>
+  host: localhost
+  username: postgres #escora-web
+  password: 12345 #<%= ENV['ESCORA-WEB_DATABASE_PASSWORD'] %>
