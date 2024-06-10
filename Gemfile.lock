@@ -111,10 +111,13 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.5.1)
     drb (2.2.1)
     erubi (1.12.0)
     execjs (2.9.1)
-    ffi (1.17.0)
+    faker (3.4.1)
+      i18n (>= 1.8.11, < 2)
+    ffi (1.17.0-x64-mingw-ucrt)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.5)
@@ -148,7 +151,6 @@ GEM
     matrix (0.4.2)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.7)
     minitest (5.23.1)
     net-imap (0.4.12)
       date
@@ -160,11 +162,10 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.3)
-    nokogiri (1.16.5)
-      mini_portile2 (~> 2.8.2)
+    nokogiri (1.16.5-x64-mingw-ucrt)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pg (1.5.6)
+    pg (1.5.6-x64-mingw-ucrt)
     psych (5.1.2)
       stringio
     public_suffix (5.0.5)
@@ -222,6 +223,23 @@ GEM
       railties (>= 5.2)
     rexml (3.2.8)
       strscan (>= 3.0.9)
+    rspec-core (3.13.0)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-rails (6.1.2)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.13)
+      rspec-expectations (~> 3.13)
+      rspec-mocks (~> 3.13)
+      rspec-support (~> 3.13)
+    rspec-support (3.13.1)
     ruby-vips (2.2.1)
       ffi (~> 1.12)
     rubyzip (2.3.2)
@@ -265,6 +283,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2024.1)
+      tzinfo (>= 1.0.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     useragent (0.16.10)
@@ -285,7 +305,7 @@ GEM
     zeitwerk (2.6.15)
 
 PLATFORMS
-  ruby
+  x64-mingw-ucrt
 
 DEPENDENCIES
   byebug
@@ -294,12 +314,14 @@ DEPENDENCIES
   carrierwave
   coffee-rails
   devise
+  faker
   jbuilder
   jquery-rails
   listen
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.2.0.beta1)
+  rspec-rails
   sass-rails
   selenium-webdriver
   simple_form
